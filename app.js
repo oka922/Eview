@@ -1,10 +1,12 @@
   var http = require('http');
-  var mongo = require("./mongo");
-  
+  var url = require('url');
+  var fs = require('fs');
+ // var mongo = require("./mongo");/home/s14196to/CNSiMac/Desktop/node/Eview/app.js
 
 
 
-  
+
+
   //view
   var htmlHeader ='<!DOCTYPE html>\
   <html lang="ja">\
@@ -15,38 +17,55 @@
     </style>\
   </head>\
   <body>';
-  
-  var htmlContent = 
+
+  var htmlContent =
   '<div class="content">\
     <ul>\
-      <li class="item"><img src="__dirname/public/img/cat.jpg" alt=""></li>\
-      <li class="item"><img src="public/img/cat.jpg" alt=""></li>\
-      <li class="item"><img src="img/cat.jpg" alt=""></li>\
+      <li class="item"><img src="img/caat.jpg" alt=""></li>\
     </ul> \
-  </div>';
+  </div>';
+
   var htmlFooter = '</body></html>';
-    
-  
+
+
   //http.server and routing
   var server = http.createServer(onRequest);
-  //var req = url.parse(req.url,true);
   function onRequest(req,res){
-    if(req.url != "/"){
+    var request = req.url;
+    var recon = request.split(".");
+    var show = recon[0];
+    console.log(recon[0]);
+    var acrion = request.parse
+    //console.log(req.url);
+    if(req == null){
     res.writeHead(404,{"Content-Type":"text/plain"});
+    console.log("error");
     res.end("error 404:Not Found");
     return;
     }
-   
-    if(req.url ="/") { 
+
+    // if(req.url =="/") {
+    // console.log("cathy");
+    // res.writeHead(200,{"Content-Type":"text/html;charset=UTF-8"});
+    // res.write(htmlHeader);
+    // res.write(htmlContent);
+    // res.write(htmlFooter);
+    // res.end();
+    // console.log("betty");
+    // return;
+    // }
+    console.log("Elly");
+
+    if(show == "/img/caat"){
+    console.log("amanda");
     res.writeHead(200,{"Content-Type":"text/html;charset=UTF-8"});
-    res.write(htmlHeader);
-    res.write(htmlContent);
-    res.write(htmlFooter);
-    console.log(__dirname);
-    //console.log(__dirname/public/img/cat.jpg);
+    var img = fs.readFileSync('./img/package.txt','utf8');
+    res.write(img);
+    console.log("fulora");
     res.end();
     return;
     }
+
   }
   var PORT = 8080;
   var ADDRESS = "localhost";
