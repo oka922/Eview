@@ -23,7 +23,7 @@
     <ul>\
       <li class="item"><img src="img/caat.jpg" alt=""></li>\
     </ul> \
-  </div>';
+   </div>';
 
   var htmlFooter = '</body></html>';
 
@@ -44,22 +44,22 @@
     return;
     }
 
-    // if(req.url =="/") {
-    // console.log("cathy");
-    // res.writeHead(200,{"Content-Type":"text/html;charset=UTF-8"});
-    // res.write(htmlHeader);
-    // res.write(htmlContent);
-    // res.write(htmlFooter);
-    // res.end();
-    // console.log("betty");
-    // return;
-    // }
+    if(req.url =="/") {
+    console.log("cathy");
+    res.writeHead(200,{"Content-Type":"text/html;charset=UTF-8"});
+    res.write(htmlHeader);
+    res.write(htmlContent);
+    res.write(htmlFooter);
+    res.end();
+    console.log("betty");
+    return;
+    }
     console.log("Elly");
 
     if(show == "/img/caat"){
     console.log("amanda");
-    res.writeHead(200,{"Content-Type":"text/html;charset=UTF-8"});
-    var img = fs.readFileSync('./img/package.txt','utf8');
+    res.writeHead(200,{"Content-Type":"image/jpeg"});
+    var img = fs.readFileSync('./img/caat.jpg');
     res.write(img);
     console.log("fulora");
     res.end();
